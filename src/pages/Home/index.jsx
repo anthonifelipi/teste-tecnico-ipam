@@ -6,6 +6,21 @@ import CompSelect from "../../components/Select";
 import api from "../../service";
 
 const Home = () => {
+  const [states, setStates] = useState([]);
+  const [stateSelected, setStateSelected] = useState();
+  const [statesName, setStatesName] = useState([]);
+
+  const listStates = () => {
+    api
+      .get("estados", {})
+      .then((response) => {
+        setStates(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  // listStates();
+  console.log(states);
+  const teste = ["oi", "olá"]
   return (
     <Flex width="100%" flexDirection="column">
       <Header />
@@ -19,7 +34,12 @@ const Home = () => {
           borderRadius="5px"
           alignItems="center"
         >
-          <CompSelect placeholder="Selecione um estado" />
+          <CompSelect
+            // placeholder="Selecione um estado"
+            value={teste}
+            option="oi"
+            children={"olá"}
+          />
         </Box>
         <Box
           width="45%"
