@@ -1,26 +1,51 @@
 import { Box, Button, Flex, Image } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CompButton from "../../components/Button";
+import Card from "../../components/Card";
 import Header from "../../components/Header";
 import CompSelect from "../../components/Select";
 import api from "../../service";
+import { selectCity } from "../../store/modules/citys/actions";
+import { stateSelected } from "../../store/modules/states/actions";
 
 const Home = () => {
-  const [states, setStates] = useState([]);
-  const [stateSelected, setStateSelected] = useState();
-  const [statesName, setStatesName] = useState([]);
+  const [stateName, setStateName] = useState(null);
+  const [cityName, setCityName] = useState("");
+  const states = useSelector(({ states }) => states);
+  const citys = useSelector(({ citys }) => citys);
+  const handleState = (event) => {
+    setStateName(event.target.value);
+  };
+
+  const dispatch = useDispatch();
 
   const listStates = () => {
     api
       .get("estados", {})
       .then((response) => {
-        setStates(response.data);
+        dispatch(stateSelected(response.data));
       })
       .catch((err) => console.log(err));
   };
-  // listStates();
-  console.log(states);
-  const teste = ["oi", "olá"]
+  console.log(stateName);
+  const listCitys = () => {
+    if (stateName != null) {
+      api
+        .get(`estados/${stateName}/municipios/`, {})
+        .then((response) => {
+          dispatch(selectCity(response.data));
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+  useEffect(() => {
+    listCitys();
+    listStates();
+  }, []);
+
+  console.log(stateName);
+  console.log(citys);
   return (
     <Flex width="100%" flexDirection="column">
       <Header />
@@ -34,12 +59,21 @@ const Home = () => {
           borderRadius="5px"
           alignItems="center"
         >
-          <CompSelect
-            // placeholder="Selecione um estado"
-            value={teste}
-            option="oi"
-            children={"olá"}
-          />
+          <CompSelect text={"Selecione um Estado"} onChange={handleState}>
+            {states.map((item, i) => {
+              return (
+                <option key={i} value={item.sigla}>
+                  {item.nome} - {item.sigla}
+                </option>
+              );
+            })}
+          </CompSelect>
+
+          <CompSelect text={"Selecione uma Cidade"}>
+            {citys?.map((item, i) => {
+              return <option key={i}>{item.nome}</option>;
+            })}
+          </CompSelect>
         </Box>
         <Box
           width="45%"
@@ -47,7 +81,7 @@ const Home = () => {
           padding="5px"
           borderRadius="5px"
         >
-          Aqui vai ficar os resultados!!
+          <Card />
         </Box>
       </Flex>
     </Flex>
