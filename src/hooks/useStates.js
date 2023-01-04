@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import api from "../service";
+import { stateSelected } from "../store/modules/states/actions";
 
 const useStates = () => {
-  const dispatch = useDispatch()
-  const [states, setStates] = useState([]);
+  const dispatch = useDispatch();
+  const states = useSelector(({ states }) => states);
 
   const listStates = () => {
     api
       .get("estados", {})
       .then((response) => {
-        setStates(response.data);
+        dispatch(stateSelected(response.data));
       })
       .catch((err) => console.log(err));
   };
@@ -18,6 +19,6 @@ const useStates = () => {
     listStates();
   }, []);
 
-  return states;
+  return { states };
 };
 export default useStates;

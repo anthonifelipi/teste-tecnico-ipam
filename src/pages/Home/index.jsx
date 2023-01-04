@@ -1,51 +1,30 @@
 import { Box, Button, Flex, Image } from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CompButton from "../../components/Button";
 import Card from "../../components/Card";
 import Header from "../../components/Header";
 import CompSelect from "../../components/Select";
-import api from "../../service";
-import { selectCity } from "../../store/modules/citys/actions";
-import { stateSelected } from "../../store/modules/states/actions";
+import useCitys from "../../hooks/useCitys";
+import useSelectedCity from "../../hooks/useCitySelected";
+import useStates from "../../hooks/useStates";
 
 const Home = () => {
-  const [stateName, setStateName] = useState(null);
-  const [cityName, setCityName] = useState("");
-  const states = useSelector(({ states }) => states);
-  const citys = useSelector(({ citys }) => citys);
-  const handleState = (event) => {
-    setStateName(event.target.value);
-  };
-
   const dispatch = useDispatch();
 
-  const listStates = () => {
-    api
-      .get("estados", {})
-      .then((response) => {
-        dispatch(stateSelected(response.data));
-      })
-      .catch((err) => console.log(err));
-  };
-  console.log(stateName);
-  const listCitys = () => {
-    if (stateName != null) {
-      api
-        .get(`estados/${stateName}/municipios/`, {})
-        .then((response) => {
-          dispatch(selectCity(response.data));
-        })
-        .catch((err) => console.log(err));
-    }
-  };
-  useEffect(() => {
-    listCitys();
-    listStates();
-  }, []);
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
 
-  console.log(stateName);
-  console.log(citys);
+  const { city } = useSelectedCity({ idCity: selectedCity });
+  const { citys } = useCitys({ uf: selectedState });
+  const { states } = useStates();
+
+  const handleState = (event) => {
+    setSelectedState(event.target.value);
+  };
+  const handleCity = (event) => {
+    setSelectedCity(event.target.value);
+  };
+
   return (
     <Flex width="100%" flexDirection="column">
       <Header />
@@ -59,7 +38,11 @@ const Home = () => {
           borderRadius="5px"
           alignItems="center"
         >
-          <CompSelect text={"Selecione um Estado"} onChange={handleState}>
+          <CompSelect
+            text={"Selecione um Estado"}
+            value={selectedState}
+            onChange={handleState}
+          >
             {states.map((item, i) => {
               return (
                 <option key={i} value={item.sigla}>
@@ -69,9 +52,17 @@ const Home = () => {
             })}
           </CompSelect>
 
-          <CompSelect text={"Selecione uma Cidade"}>
+          <CompSelect
+            text={"Selecione uma Cidade"}
+            value={selectedCity}
+            onChange={handleCity}
+          >
             {citys?.map((item, i) => {
-              return <option key={i}>{item.nome}</option>;
+              return (
+                <option value={item.id} key={i}>
+                  {item.nome}
+                </option>
+              );
             })}
           </CompSelect>
         </Box>
@@ -81,7 +72,14 @@ const Home = () => {
           padding="5px"
           borderRadius="5px"
         >
-          <Card />
+          <Card
+            city={city?.nome}
+            microrregiao={city?.microrregiao?.nome}
+            mesorregiao={city?.microrregiao?.mesorregiao?.nome}
+            uf={city?.microrregiao?.mesorregiao?.UF?.sigla}
+            ufSigla={city?.microrregiao?.mesorregiao?.UF?.nome}
+            regiao={city?.microrregiao?.mesorregiao?.UF?.regiao.nome}
+          />
         </Box>
       </Flex>
     </Flex>

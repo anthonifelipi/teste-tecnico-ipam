@@ -3,7 +3,6 @@ const cityReducer = (citys = [], action) => {
   switch (action.type) {
     case "@citys":
       return (citys = action.citys);
-
     default:
       return citys;
   }

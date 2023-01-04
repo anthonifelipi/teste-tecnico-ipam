@@ -3,7 +3,7 @@ const statesReducer = (states = [], action) => {
     case "@states":
       return (states = action.states);
     default:
-      return [];
+      return states;
   }
 };
 export default statesReducer;
