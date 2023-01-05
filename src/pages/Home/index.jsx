@@ -44,8 +44,20 @@ const Home = () => {
           borderRadius="5px"
           alignItems="center"
         >
+
+          <Box width="100%" borderBottom={"1px solid #c3c3c3"}>
+            <Text
+              textAlign="center"
+              fontFamily={"Inter"}
+              fontSize={"18px"}
+              color={"#00a651"}
+            >
+              Faça sua busca aqui!
+            </Text>
+
           <Box>
             <Text color={"#00a651"}>Faça Sua Busca Aqui!</Text>
+
           </Box>
           <CompSelect
             text={"Selecione um Estado"}
