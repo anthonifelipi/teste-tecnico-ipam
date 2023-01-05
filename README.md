@@ -4,8 +4,6 @@ Neste Projeto usamos as seguintes tecnologias:
 
 - [x] ReactJS
 - [x] Redux
-- [x] React Router Dom
-- [x] Yup
 - [x] Chakra UI
 
 ### Dependencies
