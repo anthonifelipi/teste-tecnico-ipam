@@ -1,1 +1,3 @@
-export const selectedCityAction = (city) => ({ type: "@selectedCity", city });
+import { SELECTEDCITY } from "./actionsType";
+
+export const selectedCityAction = (city) => ({ type: SELECTEDCITY, city });

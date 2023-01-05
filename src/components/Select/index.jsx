@@ -1,6 +1,4 @@
 import { Select } from "@chakra-ui/react";
-import { useState } from "react";
-import api from "../../service";
 
 const CompSelect = ({ text, value, onChange, children }) => {
   return (
@@ -9,6 +7,7 @@ const CompSelect = ({ text, value, onChange, children }) => {
       onChange={onChange}
       value={value}
       margin="15px 0px"
+      bg={"#59C58E"}
     >
       {children}
     </Select>

@@ -1,7 +1,8 @@
+import { SELECTEDCITY } from "./actionsType";
+
 const selectedCityReducer = (city = {}, action) => {
-  console.log(action);
   switch (action.type) {
-    case "@selectedCity":
+    case SELECTEDCITY:
       return (city = action.city);
     default:
       return city;

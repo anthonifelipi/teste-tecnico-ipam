@@ -1,53 +1,113 @@
-import { useEffect, useState } from "react";
 import { Box, Flex, Text } from "@chakra-ui/react";
-import api from "../../service";
 
-const Card = ({ city, microrregiao, mesorregiao, uf, ufSigla, regiao }) => {
-  //   microrregião, mesorregião, UF e região do município. Utilizar a api:
+const Card = ({ city, microrregiao, mesorregiao, ufSigla, uf, regiao }) => {
   return (
-    <Flex flexDirection="column">
-      <Box textAlign="center" borderBottom="1px solid #c3c3c3" margin="20px">
-        <Text fontSize="24px">
+    <Flex
+      minWidth="330px"
+      flexDirection="column"
+      fontFamily={"Inter"}
+      bgColor="#f5efef"
+    >
+      <Box
+        textAlign="center"
+        borderBottom="1px solid #c3c3c3"
+        bgColor="#00a651"
+        boxSize={"auto"}
+      >
+        <Text margin="8px" color="#FFF" fontSize="2em">
           <b> Cidade: {city}</b>
         </Text>
       </Box>
-      <Box borderBottom="1px solid #c3c3c3" margin="10px">
-        <Text fontSize="18px" textAlign="center">
+      <Box
+        flexDirection="column"
+        borderBottom="1px solid #c3c3c3"
+        display="flex"
+        padding="0% 5%"
+      >
+        <Text margin="8px" fontSize="24px" color="#00a651">
           <b> Microrregião</b>
         </Text>
-        <Text margin="5px">
-          <b>Nome</b>: {microrregiao}
+        <Text
+          padding="0px 5px"
+          margin="5px"
+          marginBottom="16px"
+          bgColor="#FFF"
+          width="100%"
+          borderRadius="5px"
+          fontSize="20px"
+        >
+          {microrregiao}
         </Text>
       </Box>
-      <Box borderBottom="1px solid #c3c3c3" margin="10px">
-        <Text fontSize="18px" textAlign="center">
+      <Box
+        flexDirection="column"
+        borderBottom="1px solid #c3c3c3"
+        display="flex"
+        padding="0% 5%"
+      >
+        <Text margin="8px" fontSize="24px" color="#00a651">
           <b> Mesorregião</b>
         </Text>
-        <Text margin="5px">
-          <b>Nome</b>: {mesorregiao}
+        <Text
+          padding="0px 5px"
+          margin="5px"
+          marginBottom="16px"
+          bgColor="#FFF"
+          width="100%"
+          borderRadius="5px"
+          fontSize="20px"
+        >
+          {mesorregiao}
         </Text>
       </Box>
-      <Box borderBottom="1px solid #c3c3c3" margin="10px">
-        <Text fontSize="18px" textAlign="center">
+      <Box
+        flexDirection="column"
+        borderBottom="1px solid #c3c3c3"
+        display="flex"
+        padding="0% 5%"
+      >
+        <Text margin=" 8px" fontSize="24px" color="#00a651">
           <b> UF</b>
         </Text>
         <Box display="flex">
-          <Text margin="5px">
-            <b> Sigla</b>: {uf}
+          <Text
+            padding="0px 5px"
+            margin="5px"
+            bgColor="#FFF"
+            marginBottom="15px"
+            width="100%"
+            borderRadius="5px"
+            fontSize="20px"
+          >
+            {uf}
           </Text>
-        </Box>
-        <Box display="flex">
-          <Text margin="5px">
-            <b>Nome</b>: {ufSigla}
+          <Text
+            padding="0px 5px"
+            margin="5px"
+            bgColor="#FFF"
+            marginBottom="15px"
+            width="100%"
+            borderRadius="5px"
+            fontSize="20px"
+          >
+            {ufSigla}
           </Text>
         </Box>
       </Box>
-      <Box margin="10px">
-        <Text fontSize="18px" textAlign="center">
+      <Box flexDirection="column" display="flex" margin="0% 5%">
+        <Text margin=" 8px" fontSize="24px" color="#00a651">
           <b> Região</b>
         </Text>
-        <Text margin="5px">
-          <b>Nome</b>: {regiao}
+        <Text
+          padding="0px 5px"
+          margin="10px 5px"
+          marginBottom="25px"
+          bgColor="#FFF"
+          width="100%"
+          borderRadius="5px"
+          fontSize="20px"
+        >
+          {regiao}
         </Text>
       </Box>
     </Flex>

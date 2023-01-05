@@ -1,6 +1,5 @@
-import { Box, Button, Flex, Image } from "@chakra-ui/react";
-import { useState, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Box, Flex } from "@chakra-ui/react";
+import { useState } from "react";
 import Card from "../../components/Card";
 import Header from "../../components/Header";
 import CompSelect from "../../components/Select";
@@ -9,8 +8,6 @@ import useSelectedCity from "../../hooks/useCitySelected";
 import useStates from "../../hooks/useStates";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
 
@@ -26,15 +23,24 @@ const Home = () => {
   };
 
   return (
-    <Flex width="100%" flexDirection="column">
+    <Flex width="100%" flexDirection="column" height={"100vh"}>
       <Header />
-      <Flex justifyContent="space-around">
+      <Flex
+        justifyContent="space-around"
+        flexDirection={{ base: "column", md: "row" }}
+        alignItems={{ base: "center", md: "stretch" }}
+      >
         <Box
+          margin={{ base: "10px", md: "0px" }}
           display="flex"
           flexDirection="column"
-          width="45%"
-          border="2px solid #f3f3f3"
-          padding="5px"
+          justifyContent="center"
+          bgColor="#f5efef"
+          width="25%"
+          minWidth="350px"
+          border="2px solid #00a651"
+          height="20vh"
+          padding="15px"
           borderRadius="5px"
           alignItems="center"
         >
@@ -67,17 +73,18 @@ const Home = () => {
           </CompSelect>
         </Box>
         <Box
-          width="45%"
-          border="2px solid #f3f3f3"
-          padding="5px"
+          width="35%"
+          minWidth="350px"
+          border="1px solid #00a651 "
+          margin={{ base: "10px", md: "0px" }}
           borderRadius="5px"
         >
           <Card
             city={city?.nome}
             microrregiao={city?.microrregiao?.nome}
             mesorregiao={city?.microrregiao?.mesorregiao?.nome}
-            uf={city?.microrregiao?.mesorregiao?.UF?.sigla}
-            ufSigla={city?.microrregiao?.mesorregiao?.UF?.nome}
+            uf={city?.microrregiao?.mesorregiao?.UF?.nome}
+            ufSigla={city?.microrregiao?.mesorregiao?.UF?.sigla}
             regiao={city?.microrregiao?.mesorregiao?.UF?.regiao.nome}
           />
         </Box>

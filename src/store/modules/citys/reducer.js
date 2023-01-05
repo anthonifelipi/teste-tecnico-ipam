@@ -1,7 +1,8 @@
+import { CITYS } from "./actionsType";
+
 const cityReducer = (citys = [], action) => {
-  console.log(action);
   switch (action.type) {
-    case "@citys":
+    case CITYS:
       return (citys = action.citys);
     default:
       return citys;
