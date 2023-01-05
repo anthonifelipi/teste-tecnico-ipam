@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import Card from "../../components/Card";
 import Header from "../../components/Header";
@@ -39,11 +39,14 @@ const Home = () => {
           width="25%"
           minWidth="350px"
           border="2px solid #00a651"
-          height="20vh"
+          height="30vh"
           padding="15px"
           borderRadius="5px"
           alignItems="center"
         >
+          <Box>
+            <Text color={"#00a651"}>Faça Sua Busca Aqui!</Text>
+          </Box>
           <CompSelect
             text={"Selecione um Estado"}
             value={selectedState}
