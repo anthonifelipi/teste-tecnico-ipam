@@ -1,7 +1,7 @@
 ## 💻 Teste Tecnico IPAM
  Imagem do IPAM
 <p align="center">
- <img width="100%" src="https://i.postimg.cc/x8WqxkPt/IPAM-AMAZONIA.png" alt="imagem do ipam de uma floresta" />
+ <img width="100%" src="https://i.postimg.cc/NF9tw70H/IMAGEM-IPAM-CERTA.png" alt="imagem do ipam de uma floresta" />
 </p>
 Imagem da aplicaçao
 <p align="center">
