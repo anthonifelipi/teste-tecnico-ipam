@@ -5,7 +5,7 @@
 </p>
 Imagem da aplicaçao
 <p align="center">
- <img width="100%" src="https://i.postimg.cc/fTPTv0bd/foto-para-readme.png" alt="imagem da aplicação com 2 selects e o resultado da cidade" />
+ <img width="100%" src="https://i.postimg.cc/6q9Zjq6g/IPAM-imagem-git.png" alt="imagem da aplicação com 2 selects e o resultado da cidade" />
 </p>
 Faça busca de cidades com retorno de informações especificas.
 
