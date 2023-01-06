@@ -1,11 +1,22 @@
+## 💻 Teste Tecnico IPAM
+ Imagem do IPAM
+<p align="center">
+ <img width="100%" src="https://i.postimg.cc/x8WqxkPt/IPAM-AMAZONIA.png" alt="imagem do ipam de uma floresta" />
+</p>
+Imagem da aplicaçao
+<p align="center">
+ <img width="100%" src="https://i.postimg.cc/fTPTv0bd/foto-para-readme.png" alt="imagem da aplicação com 2 selects e o resultado da cidade" />
+</p>
+Faça busca de cidades com retorno de informações especificas.
+
+
+  
 ## 🚀 Techs
 
 Neste Projeto usamos as seguintes tecnologias:
 
 - [x] ReactJS
 - [x] Redux
-- [x] React Router Dom
-- [x] Yup
 - [x] Chakra UI
 
 ### Dependencies
