@@ -1,11 +1,12 @@
 ## 💻 Teste Tecnico IPAM
  Imagem do IPAM
 <p align="center">
- <img width="100%" src="https://i.postimg.cc/NF9tw70H/IMAGEM-IPAM-CERTA.png" alt="imagem do ipam de uma floresta" />
+ <img width="100%" src="https://i.postimg.cc/Gpghwpj6/IPAM-AMAZONIA.png" alt="imagem do ipam de uma floresta" />
 </p>
+
 Imagem da aplicaçao
 <p align="center">
- <img width="100%" src="https://i.postimg.cc/6q9Zjq6g/IPAM-imagem-git.png" alt="imagem da aplicação com 2 selects e o resultado da cidade" />
+ <img width="100%" src="https://i.postimg.cc/NF9tw70H/IMAGEM-IPAM-CERTA.png" alt="imagem da aplicação com 2 selects e o resultado da cidade" />
 </p>
 Faça busca de cidades com retorno de informações especificas.
 
